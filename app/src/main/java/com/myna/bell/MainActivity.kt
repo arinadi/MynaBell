@@ -10,6 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import android.content.Intent
+import com.myna.bell.service.MediaService
+import com.myna.bell.ui.radio.RadioScreen
 import com.myna.bell.ui.theme.MynaBellTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,30 +22,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MynaBellTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Myna Bell Initialized")
-                }
+                RadioScreen(
+                    onPlay = { url ->
+                        val intent = Intent(this, MediaService::class.java).apply {
+                            action = "ACTION_PLAY"
+                            putExtra("URL", url)
+                        }
+                        startService(intent) // Start Foreground Service
+                    }
+                )
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MynaBellTheme {
-        Greeting("Android")
-    }
-}
