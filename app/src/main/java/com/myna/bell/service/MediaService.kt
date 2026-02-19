@@ -60,15 +60,27 @@ class MediaService : MediaSessionService() {
         when (intent?.action) {
             "ACTION_PLAY" -> {
                 val url = intent.getStringExtra("URL")
-                if (url != null) {
-                    val mediaItem = androidx.media3.common.MediaItem.fromUri(url)
-                    player.setMediaItem(mediaItem)
-                    player.prepare()
-                    player.play()
-                }
+                playUrl(url)
+            }
+            "ACTION_ALARM_TRIGGER" -> {
+                val stationId = intent.getStringExtra("STATION_ID")
+                // TODO: Look up URL from Repo using stationId
+                // For MVP, we might need to inject Repo here or pass URL directly in Alarm
+                // For now, let's play a fallback or hardcoded URL to test
+                val fallbackUrl = "https://media-ssl.musicradio.com/JazzFM"
+                playUrl(fallbackUrl)
             }
         }
         return START_NOT_STICKY
+    }
+
+    private fun playUrl(url: String?) {
+        if (url != null) {
+            val mediaItem = androidx.media3.common.MediaItem.fromUri(url)
+            player.setMediaItem(mediaItem)
+            player.prepare()
+            player.play()
+        }
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {

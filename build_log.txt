@@ -16,7 +16,9 @@
 > Task :app:processDebugManifestForPackage UP-TO-DATE
 > Task :app:processDebugResources UP-TO-DATE
 > Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
 > Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
 > Task :app:mergeDebugShaders UP-TO-DATE
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
@@ -24,39 +26,47 @@
 > Task :app:compressDebugAssets UP-TO-DATE
 > Task :app:l8DexDesugarLibDebug UP-TO-DATE
 > Task :app:desugarDebugFileDependencies UP-TO-DATE
-> Task :app:checkDebugDuplicateClasses UP-TO-DATE
-> Task :app:mergeExtDexDebug UP-TO-DATE
-> Task :app:mergeLibDexDebug UP-TO-DATE
-> Task :app:mergeDebugJniLibFolders UP-TO-DATE
-> Task :app:mergeDebugNativeLibs NO-SOURCE
-> Task :app:stripDebugDebugSymbols NO-SOURCE
-> Task :app:validateSigningDebug UP-TO-DATE
-> Task :app:writeDebugAppMetadata UP-TO-DATE
-> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:hiltAggregateDepsDebug UP-TO-DATE
 
-> Task :app:compileDebugKotlin FAILED
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/di/NetworkModule.kt:9:16 Unresolved reference 'logging'.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/di/NetworkModule.kt:23:23 Unresolved reference 'HttpLoggingInterceptor'.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/di/NetworkModule.kt:23:48 Cannot infer type for this parameter. Specify it explicitly.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/di/NetworkModule.kt:23:54 Cannot infer type for this parameter. Specify it explicitly.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/di/NetworkModule.kt:24:13 Unresolved reference 'level'.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/di/NetworkModule.kt:24:21 Unresolved reference 'HttpLoggingInterceptor'.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/di/NetworkModule.kt:31:14 Unresolved reference 'build'.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/ui/radio/RadioScreen.kt:14:17 Unresolved reference 'hilt'.
-e: file:///D:/Myna-Bell/app/src/main/java/com/myna/bell/ui/radio/RadioScreen.kt:29:33 Unresolved reference 'hiltViewModel'.
+> Task :app:hiltJavaCompileDebug FAILED
+D:\Myna-Bell\app\build\generated\hilt\component_sources\debug\com\myna\bell\MynaBellApp_HiltComponents.java:147: error: [Dagger/MissingBinding] com.myna.bell.domain.AlarmScheduler cannot be provided without an @Provides-annotated method.
+  public abstract static class SingletonC implements MynaBellApp_GeneratedInjector,
+                         ^
+  
+      com.myna.bell.domain.AlarmScheduler is injected at
+          [com.myna.bell.MynaBellApp_HiltComponents.SingletonC] com.myna.bell.receiver.BootReceiver.alarmScheduler
+      com.myna.bell.receiver.BootReceiver is injected at
+          [com.myna.bell.MynaBellApp_HiltComponents.SingletonC] com.myna.bell.receiver.BootReceiver_GeneratedInjector.injectBootReceiver(com.myna.bell.receiver.BootReceiver)
+  It is also requested at:
+      com.myna.bell.ui.alarm.AlarmViewModel(…, alarmScheduler)
+  The following other entry points also depend on it:
+      dagger.hilt.android.internal.lifecycle.HiltViewModelFactory.ViewModelFactoriesEntryPoint.getHiltViewModelMap() [com.myna.bell.MynaBellApp_HiltComponents.SingletonC ? com.myna.bell.MynaBellApp_HiltComponents.ActivityRetainedC ? com.myna.bell.MynaBellApp_HiltComponents.ViewModelC]
+1 error
+
+[Incubating] Problems report is available at: file:///D:/Myna-Bell/build/reports/problems/problems-report.html
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':app:compileDebugKotlin'.
-> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
-   > Compilation error. See log for more details
+Execution failed for task ':app:hiltJavaCompileDebug'.
+> Compilation failed; see the compiler output below.
+  D:\Myna-Bell\app\build\generated\hilt\component_sources\debug\com\myna\bell\MynaBellApp_HiltComponents.java:147: error: [Dagger/MissingBinding] com.myna.bell.domain.AlarmScheduler cannot be provided without an @Provides-annotated method.
+    public abstract static class SingletonC implements MynaBellApp_GeneratedInjector,
+                           ^
+    
+        com.myna.bell.domain.AlarmScheduler is injected at
+            [com.myna.bell.MynaBellApp_HiltComponents.SingletonC] com.myna.bell.receiver.BootReceiver.alarmScheduler
+        com.myna.bell.receiver.BootReceiver is injected at
+            [com.myna.bell.MynaBellApp_HiltComponents.SingletonC] com.myna.bell.receiver.BootReceiver_GeneratedInjector.injectBootReceiver(com.myna.bell.receiver.BootReceiver)
+    It is also requested at:
+        com.myna.bell.ui.alarm.AlarmViewModel(…, alarmScheduler)
+    The following other entry points also depend on it:
+        dagger.hilt.android.internal.lifecycle.HiltViewModelFactory.ViewModelFactoriesEntryPoint.getHiltViewModelMap() [com.myna.bell.MynaBellApp_HiltComponents.SingletonC ? com.myna.bell.MynaBellApp_HiltComponents.ActivityRetainedC ? com.myna.bell.MynaBellApp_HiltComponents.ViewModelC]
+  1 error
 
 * Try:
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
+> Check your code and dependencies to fix the compilation error(s)
 > Run with --scan to get full insights.
-> Get more help at https://help.gradle.org.
 
-BUILD FAILED in 3s
-28 actionable tasks: 1 executed, 27 up-to-date
+BUILD FAILED in 4s
+24 actionable tasks: 1 executed, 23 up-to-date

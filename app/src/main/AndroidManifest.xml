@@ -34,6 +34,21 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".receiver.AlarmReceiver" />
+        <receiver 
+            android:name=".receiver.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ui.wakeup.WakeUpActivity"
+            android:exported="false"
+            android:showOnLockScreen="true"
+            android:theme="@style/Theme.MynaBell" />
+
         <service 
             android:name=".service.MediaService"
             android:exported="false"
