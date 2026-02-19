@@ -11,11 +11,11 @@ The project follows a standard multi-module Android structure:
 
 ## 🛠️ Build Environment
 
-- **Kotlin**: 2.0.0 (via `org.jetbrains.kotlin.android`)
-- **Android Gradle Plugin (AGP)**: 8.5.2
+- **Kotlin**: 2.2.0 (via `org.jetbrains.kotlin.android`)
+- **Android Gradle Plugin (AGP)**: 8.10.0
 - **Hilt**: 2.57.2
-- **KSP**: 2.0.0-1.0.21
-- **Compose Compiler**: 2.0.0 (via `org.jetbrains.kotlin.plugin.compose`)
+- **KSP**: 2.3.0
+- **Compose Compiler**: 2.2.0 (via `org.jetbrains.kotlin.plugin.compose`)
 - **Java Version**: 17 (Source & Target Compatibility)
 
 ## 📱 Android Configuration
