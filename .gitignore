@@ -9,7 +9,7 @@ local.properties
 *.iml
 *.class
 *.jar
-!.gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
 
 # Python (if needed later)
 __pycache__/
