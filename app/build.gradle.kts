@@ -83,6 +83,17 @@ android {
             signingConfig = signingConfigs.getByName("release")
         }
     }
+
+    // Rename APK to include version name
+    applicationVariants.all {
+        val variant = this
+        variant.outputs
+            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
+            .forEach { output ->
+                output.outputFileName = "MynaBell-${variant.name}-${variant.versionName}.apk"
+            }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
