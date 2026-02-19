@@ -1,0 +1,30 @@
+# Android
+.gradle/
+build/
+app/build/
+local.properties
+
+# Kotlin/Java
+.idea/
+*.iml
+*.class
+*.jar
+!.gradle/wrapper/gradle-wrapper.jar
+
+# Python (if needed later)
+__pycache__/
+*.py[cod]
+.venv/
+env/
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.jks
+secrets.properties
+signing_key_base64.txt
